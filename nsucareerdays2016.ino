@@ -8,9 +8,10 @@ const char* ssid     = "*****";
 const char* password = "*****";
 const int httpPort = 80;
 const char* host = "ngurestexample.us-east-1.elasticbeanstalk.com";
+const int powerPin = D2;
 
 // http://stackoverflow.com/questions/33450946/esp8266-for-arduino-ide-xtensa-lx106-elf-gcc-and-stdmap-linking-error
-std::map <char*,int> lights = {{"light01", 5}, {"light02", 4},{"light03", 2}};
+std::map <char*,int> lights = {{"light01", D1}, {"light02", D3},{"light03", D4}};
 
 void setupPins() {
   for (auto it = lights.begin(); it != lights.end(); ++it)
@@ -38,6 +39,9 @@ void setup() {
     }
     delay(10000);
   }
+
+  pinMode(powerPin, OUTPUT);
+  digitalWrite(powerPin, HIGH);
 }
 
 void loop() {

@@ -3,15 +3,18 @@ console.log('start http client.');
 
 var settings = [
 	{ pin: 5, resource: 'light01' },
-	{ pin: 4, resource: 'light02' },
-	{ pin: 2, resource: 'light03' }
+	{ pin: 2, resource: 'light02' },
+	{ pin: 0, resource: 'light03' }
 ];
+var powerPin = 4;
 
 function initPins(settings) {
 	settings.forEach(function (setting) {
 		GPIO.setmode(setting.pin, 0, 0);
 		GPIO.write(setting.pin, false);
 	});
+	GPIO.setmode(powerPin, 0, 0);
+	GPIO.write(powerPin, true);
 }
 
 function changedCallback(cb) {
