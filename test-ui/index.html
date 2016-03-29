@@ -51,7 +51,13 @@
                     var $this = $(this);
                     var checked = this.checked;
                     var name = $this.attr('name');
-                    $.post(baseUrl + name + '/' + checked);
+                    
+                    $.ajax({
+                    	method: 'POST',
+                    	url: baseUrl + name,
+                    	data: checked ? 'true' : 'false',
+                    	contentType: 'application/json'
+                    });
                 });
             });
         </script>
